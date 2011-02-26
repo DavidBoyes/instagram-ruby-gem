@@ -5,6 +5,7 @@ module Instagram
     def authorize_url(options={})
       options[:response_type] ||= "code"
       params = access_token_params.merge(options)
+      params = params.merge({:scope => 'comments likes relationships'})
       connection.build_url("/oauth/authorize/", params).to_s
     end
 
